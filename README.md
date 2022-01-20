@@ -9,8 +9,8 @@ Steps to configure this setup, from the portal:
   - Go to networking settings
   - Get the list of outbound IPs
 - Navigate to the SQL Server
-- Open the firewall settings
-- Add the list of the WebApp outbound IPs
+  - Open the firewall settings
+  - Add the list of the WebApp outbound IPs
 
 Other Options:
 
