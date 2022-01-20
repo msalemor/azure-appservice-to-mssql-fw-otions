@@ -69,7 +69,7 @@ Steps to configure this setup, from the portal:
 - Make a call to the database from the App Service using the public URI
 
 Routing: 
-- Traffic is routed from the App Service over the subnet and only traffic from that subnet will be accepted by the Azure SQL. 
+- Traffic is routed from the App Service over the subnet and only traffic from that subnet will be allowed by the Azure SQL. 
 - There’s no private IP assigned to the database. 
 - A jumpbox is needed to administer the database.
 
