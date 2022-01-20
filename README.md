@@ -1,7 +1,7 @@
 # App Service to Azure SQL connectivity using IP lists, Service Endpoint and Private Endpoint
 
 
-## App Service to SQL with Outbound IPs fire rule
+## App Service to Azure SQL with Outbound IPs firewall rule
 
 Steps to configure this setup, from the portal:
 
@@ -66,7 +66,9 @@ Steps to configure this setup, from the portal:
 - Create a database subnet in the VNET
   - Enable Service Endpoint for Microsoft.SQL on the database subnet
 - Enable VNET Integration on the App Service and point it to the database subnet
+  - > Note: Make sure to enable ```Route all``` on the network configuration settings for the WebApp
 - Make a call to the database from the App Service using the public URI
+
 
 Routing: 
 - Traffic is routed from the App Service over the subnet and only traffic from that subnet will be allowed by the Azure SQL. 
@@ -81,10 +83,12 @@ Steps to configure this setup, from the portal:
 - Create a database subnet
 - Create a SQL Private Endpoint and use database subnet
 - Enable VNET integration and point the connection the connection subnet
+  - > Note: Make sure to enable ```Route all``` on the network configuration settings for the WebApp
 - Make a call to the database from the App Service using the regular public URI
 
 Routing:
-- Traffic is routed from the App Service over the connection subnet to the database subnet and only traffic from that coming from the connection and database subnets is allowed to reach the database. 
+- Traffic is routed from the App Service over the connection subnet to the database subnet and only traffic from that coming from the connection and database subnets is allowed to reach the database.
 - The database gets a private IP assignment. These disables all other firewall rules.
 - A jumpbox is needed to administer the database. 
 - NSGs can be applied between the connection and the database subnet to restrict traffic further.
+- If is possible to have on-prem devices access the Azure SQL using hybrid DNS configuration
