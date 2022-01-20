@@ -90,5 +90,5 @@ Routing:
 - Traffic is routed from the App Service over the connection subnet to the database subnet and only traffic from that coming from the connection and database subnets is allowed to reach the database.
 - The database gets a private IP assignment. These disables all other firewall rules.
 - A jumpbox is needed to administer the database. 
-- NSGs can be applied between the connection and the database subnet to restrict traffic further.
+- NSGs can be applied between the connection and the database subnets to restrict traffic further.
 - If is possible to have on-prem devices access the Azure SQL using hybrid DNS configuration
