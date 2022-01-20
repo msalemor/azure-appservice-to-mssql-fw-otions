@@ -22,7 +22,7 @@ Routing:
 - Only traffic from the allowed IPs will be allowed to ingress the Azure SQL
 
 Automation:
-- This code can add the WebApp outbound IPs to the Azure SQL automatically
+- This code can add the WebApp outbound IPs to the Azure SQL programmatically
 
 ```bash
 #!/bin/bash  
