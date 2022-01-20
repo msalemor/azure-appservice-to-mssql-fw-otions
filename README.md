@@ -66,7 +66,7 @@ Steps to configure this setup, from the portal:
 - Create a database subnet in the VNET
   - Enable Service Endpoint for Microsoft.SQL on the database subnet
 - Enable VNET Integration on the App Service and point it to the database subnet
-  - > Note: Make sure to enable ```Route all``` on the network configuration settings for the WebApp
+  - > Note: Make sure to enable ```Route all``` on the network configuration settings for the WebApp. This setting ensures that traffic is routed through the Azure backbone.
 - Make a call to the database from the App Service using the public URI
 
 
@@ -83,7 +83,7 @@ Steps to configure this setup, from the portal:
 - Create a database subnet
 - Create a SQL Private Endpoint and use database subnet
 - Enable VNET integration and point the connection the connection subnet
-  - > Note: Make sure to enable ```Route all``` on the network configuration settings for the WebApp
+  - > Note: Make sure to enable ```Route all``` on the network configuration settings for the WebApp. This setting ensures that traffic is routed through the Azure backbone.
 - Make a call to the database from the App Service using the regular public URI
 
 Routing:
