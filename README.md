@@ -1,9 +1,9 @@
-# AppService to MS SQL connectivity IP lists, private connection and private endpoint
+# AppService to Azure SQL connectivity using IP lists, Servvice Endpoint and Private Endpoint
+
 
 ## App Service to SQL with Outbound IPs fire rule
 
-
-Steps to configure, from the portal:
+Steps to configure this setup, from the portal:
 
 - On the WebApp
   - Go to networking settings
@@ -14,39 +14,39 @@ Steps to configure, from the portal:
 
 Other Options:
 
-- You could use a NAT Gateway to use just one IP
+- You could use a NAT Gateway to use just one IP from the WebApp to the Azure SQL
 
 Routing:
 
 - Traffic will be routed out to the Internet
-- Only traffic from the allowed IPs will be ingress the MS SQL
+- Only traffic from the allowed IPs will be ingress the Azure SQL
 
 > **Note:** this code can add the Web App outbound IPs to the Azure SQL automatically
 
 ```bash
 #!/bin/bash  
+
+# Set variables
 RG=<RG GROUP NAME>
 WAPP=<WEBAPP NAME>
 DBSVR=<MSSQL SVR NAME>
+
+# Get the IPS
 IPS=$(az webapp show -n $WAPP -g $RG --query "outboundIpAddresses" -o tsv)
 
 if [ IPS != "" ];
 then
-    #echo $IPS    
+    # remove the trailing \r
+    IPS=${IPS::-1} 
 
-    # Set space as the delimiter
-    IPS=${IPS::-1} # remove the trailing \r
-    echo $IPS
+    # Split IPs into an array
     IFS=','
-
-    # Read the split words into an array
-    # based on space delimiter
     read -ra OIPS <<< "$IPS"
 
     c=1
     RULE_NAME="rule for $WAPP $c"
-    
-    for i in "${OIPS[@]}"; #accessing each element of array  
+        
+    for i in "${OIPS[@]}";   
     do  
         echo "$RULE_NAME : $i"        
         az sql server firewall-rule create -g $RG -s $DBSVR -n $RULE_NAME --start-ip-address $i --end-ip-address $i
@@ -57,7 +57,32 @@ fi
 ```
 
 
-## App Service VNET Integration using Service Endpoint
+## App Service with VNET Integration using Service Endpoint
 
-## App Service VNET Integration using Private Endpoint
+Steps to configure this setup, from the portal:
 
+- Create VNET
+- Create a database subnet in the VNET
+  - Enable Service Endpoint for Microsoft.SQL on the database subnet
+- Enable VNET Integration on the App Service and point it to the database subnet
+- Make a call to the database from the App Service using the public URI
+
+Routing: 
+- Traffic is routed from the App Service over the subnet and only traffic from that subnet will be accepted by the Azure SQL. 
+- There’s no private IP assigned to the database. A jumpbox is need to administer the database.
+
+## App Service with VNET Integration using Private Endpoint
+
+Steps to configure this setup, from the portal:
+- Create VNET
+- Create a connection subnet
+- Create a database subnet
+- Create a SQL Private Endpoint and use database subnet
+- Enable VNET integration and point the connection the connection subnet
+- Make a call to the database from the App Service using the regular public URI
+
+Routing:
+- Traffic is routed from the App Service over the connection subnet to the database subnet and only traffic from that coming from the connection and database subnets is allowed to reach the database. 
+- The database gets a private IP assignment. These disables all other firewall rules.
+- A jumpbox is need to administer the database. 
+- NSGs can be applied between the connection and the database subnet to restrict traffic further.
