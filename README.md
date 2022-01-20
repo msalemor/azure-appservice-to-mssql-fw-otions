@@ -19,7 +19,7 @@ Other Options:
 Routing:
 
 - Traffic will be routed out to the Internet
-- Only traffic from the allowed IPs will be ingress the Azure SQL
+- Only traffic from the allowed IPs will be allowed to ingress the Azure SQL
 
 Automation:
 - This code can add the WebApp outbound IPs to the Azure SQL automatically
