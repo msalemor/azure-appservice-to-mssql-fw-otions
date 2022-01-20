@@ -8,7 +8,7 @@ Steps to configure this setup, from the portal:
 - On the WebApp
   - Go to networking settings
   - Get the list of outbound IPs
-- Navigate to the SQL Server
+- Navigate to the Azure SQL instance
   - Open the firewall settings
   - Add the list of the WebApp outbound IPs
 
