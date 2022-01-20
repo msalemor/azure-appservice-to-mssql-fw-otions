@@ -1,4 +1,4 @@
-# AppService to Azure SQL connectivity using IP lists, Servvice Endpoint and Private Endpoint
+# AppService to Azure SQL connectivity using IP lists, Service Endpoint and Private Endpoint
 
 
 ## App Service to SQL with Outbound IPs fire rule
