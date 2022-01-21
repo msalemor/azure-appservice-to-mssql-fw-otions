@@ -13,12 +13,12 @@ Steps to configure this setup, from the portal:
 
 Other Options:
 
-- You could use a NAT Gateway to use just one IP from the WebApp to the Azure SQL
+- You could use a NAT Gateway to use get and use just one IP from the WebApp on the Azure SQL firewall settings
 
 Routing:
 
-- Traffic will be routed out to the Internet
-- Only traffic from the allowed IPs will be allowed to ingress the Azure SQL
+- Traffic will be routed out to the Internet into the Paas service (in this case the Azure SQL)
+- Only traffic from the allowed IPs will be allowed to ingress the Azure SQL defined on the firewall rules
 
 Automation:
 - This code can add the WebApp outbound IPs to the Azure SQL programmatically
