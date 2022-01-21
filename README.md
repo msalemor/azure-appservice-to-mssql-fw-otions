@@ -1,6 +1,5 @@
 # App Service to Azure SQL connectivity using IP lists, Service Endpoint and Private Endpoint
 
-
 ## App Service to Azure SQL with Outbound IPs firewall rule
 
 Steps to configure this setup, from the portal:
@@ -57,6 +56,20 @@ then
 fi
 ```
 
+## Compare Service Endpoint vs Private Link vs App Service Environment
+
+
+
+If you have an App Service Environment but aren't using SQL Managed Instance, you can still use a Private Endpoint for private connectivity to a SQL Database. If you already have SQL Managed Instance but are using multi-tenant App Service, you can still use regional VNet Integration to connect to the SQL Managed Instance private address.
+
+You can use a Service Endpoint to secure the database. With a Service Endpoint, the private endpoint, PrivateLinkSubnet, and configuring the Route All regional VNet integration setting are unnecessary. You still need regional VNet Integration to route incoming traffic through the Virtual Network.
+
+Compared to Service Endpoints, a Private Endpoint provides a private, dedicated IP address toward a specific instance, for example a logical SQL Server, rather than an entire service. Private Endpoints can help prevent data exfiltration towards other database servers. For more information, see Comparison between Service Endpoints and Private Endpoints.
+
+An alternative approach for private connectivity is an App Service Environment for hosting the web application within an isolated environment, and Azure SQL Managed Instance as the database engine. Both of these services are natively deployed within a Virtual Network, so there's no need for VNet Integration or private endpoints. These offerings are typically more costly, because they provide single-tenant isolated deployment and other features.
+
+Reference Document:
+- [private-web-app](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/private-web-app/private-web-app#alternatives)
 
 ## App Service with VNET Integration using Service Endpoint
 
@@ -91,4 +104,4 @@ Routing:
 - The database gets a private IP assignment. These disables all other firewall rules.
 - A jumpbox is needed to administer the database. 
 - NSGs can be applied between the connection and the database subnets to restrict traffic further.
-- If is possible to have on-prem devices access the Azure SQL using hybrid DNS configuration
+- It is possible to have on-prem devices access the Azure SQL using a hybrid DNS configuration
