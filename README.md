@@ -56,9 +56,7 @@ then
 fi
 ```
 
-## Compare Service Endpoint vs Private Link vs App Service Environment
-
-
+## Service Endpoint vs Private Link vs App Service Environment
 
 If you have an App Service Environment but aren't using SQL Managed Instance, you can still use a Private Endpoint for private connectivity to a SQL Database. If you already have SQL Managed Instance but are using multi-tenant App Service, you can still use regional VNet Integration to connect to the SQL Managed Instance private address.
 
@@ -69,7 +67,7 @@ Compared to Service Endpoints, a Private Endpoint provides a private, dedicated 
 An alternative approach for private connectivity is an App Service Environment for hosting the web application within an isolated environment, and Azure SQL Managed Instance as the database engine. Both of these services are natively deployed within a Virtual Network, so there's no need for VNet Integration or private endpoints. These offerings are typically more costly, because they provide single-tenant isolated deployment and other features.
 
 Reference Document:
-- [private-web-app](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/private-web-app/private-web-app#alternatives)
+- [Preivate WebApp](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/private-web-app/private-web-app#alternatives)
 
 ## App Service with VNET Integration using Service Endpoint
 
