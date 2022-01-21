@@ -66,8 +66,9 @@ Compared to Service Endpoints, a Private Endpoint provides a private, dedicated 
 
 An alternative approach for private connectivity is an App Service Environment for hosting the web application within an isolated environment, and Azure SQL Managed Instance as the database engine. Both of these services are natively deployed within a Virtual Network, so there's no need for VNet Integration or private endpoints. These offerings are typically more costly, because they provide single-tenant isolated deployment and other features.
 
-Reference Document:
+Reference Documents:
 - [Preivate WebApp](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/private-web-app/private-web-app#alternatives)
+- [Compare Service Endpoint vs Private Endpoint](https://docs.microsoft.com/en-us/azure/virtual-network/vnet-integration-for-azure-services#compare-private-endpoints-and-service-endpoints)
 
 ## App Service with VNET Integration using Service Endpoint
 
