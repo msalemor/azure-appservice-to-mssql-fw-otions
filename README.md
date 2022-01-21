@@ -70,7 +70,7 @@ Reference Documents:
 - [Preivate WebApp](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/private-web-app/private-web-app#alternatives)
 - [Compare Service Endpoint vs Private Endpoint](https://docs.microsoft.com/en-us/azure/virtual-network/vnet-integration-for-azure-services#compare-private-endpoints-and-service-endpoints)
 
-## App Service with VNET Integration using Service Endpoint
+## App Service to Azure SQL with VNET Integration using Service Endpoint
 
 Steps to configure this setup, from the portal:
 
@@ -87,7 +87,7 @@ Routing:
 - There’s no private IP assigned to the database. 
 - If you dont open a public IP in the Azure SQL firewall settings, a jumpbox is needed to administer the database.
 
-## App Service with VNET Integration using Private Endpoint
+## App Service to Azure SQL with VNET Integration using Private Endpoint
 
 Steps to configure this setup, from the portal:
 - Create VNET
