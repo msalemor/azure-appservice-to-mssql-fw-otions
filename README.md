@@ -84,7 +84,7 @@ Steps to configure this setup, from the portal:
 Routing: 
 - Traffic is routed from the App Service over the subnet and only traffic from that subnet will be allowed by the Azure SQL. 
 - There’s no private IP assigned to the database. 
-- A jumpbox is needed to administer the database.
+- If you dont open a public IP in the Azure SQL firewall settings, a jumpbox is needed to administer the database.
 
 ## App Service with VNET Integration using Private Endpoint
 
@@ -100,6 +100,6 @@ Steps to configure this setup, from the portal:
 Routing:
 - Traffic is routed from the App Service over the connection subnet to the database subnet and only traffic from that coming from the connection and database subnets is allowed to reach the database.
 - The database gets a private IP assignment. These disables all other firewall rules.
-- A jumpbox is needed to administer the database. 
+- If you dont open a public IP in the Azure SQL firewall settings, a jumpbox is needed to administer the database. 
 - NSGs can be applied between the connection and the database subnets to restrict traffic further.
 - It is possible to have on-prem devices access the Azure SQL using a hybrid DNS configuration
